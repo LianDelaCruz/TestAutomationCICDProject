@@ -35,3 +35,19 @@ Feature: User Registration
     And I accept the Code of Ethics
     And I submit the form
     Then I should see "Last Name is required" error for field "Surname"
+
+  Scenario: Create user – password does not match
+    When I fill in First Name with "Bob"
+    And I fill in Last Name with "Smith"
+    And I fill in Date of Birth with "01/01/1990"
+    And I fill in a unique Email address
+    And I fill in Confirm Email as the same unique address
+    And I fill in Password with "Password1234!"
+    And I fill in Confirm Password with "Password12345!"
+    And I accept the Terms and Conditions
+    And I accept the Age Confirmation
+    And I accept Communications Preferences
+    And I accept the Code of Ethics
+    And I submit the form
+    Then I should see "Password did not match" error for field "ConfirmPassword"
+
