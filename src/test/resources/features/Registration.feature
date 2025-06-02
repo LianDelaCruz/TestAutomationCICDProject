@@ -20,3 +20,18 @@ Feature: User Registration
     And I accept the Code of Ethics
     And I submit the form
     Then I should see confirmation of successful registration
+
+  Scenario: Create user – last name is missing
+    When I fill in First Name with "Lian"
+    And I leave Last Name blank
+    And I fill in Date of Birth with "01/01/1990"
+    And I fill in a unique Email address
+    And I fill in Confirm Email as the same unique address
+    And I fill in Password with "Password1234!"
+    And I fill in Confirm Password with "Password1234!"
+    And I accept the Terms and Conditions
+    And I accept the Age Confirmation
+    And I accept Communications Preferences
+    And I accept the Code of Ethics
+    And I submit the form
+    Then I should see "Last Name is required" error for field "Surname"
