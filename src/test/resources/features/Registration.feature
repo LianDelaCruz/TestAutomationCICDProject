@@ -9,8 +9,9 @@ Feature: User Registration
   Scenario: Create user – everything goes as expected and an account is created
     When I fill in First Name with "Lian"
     And I fill in Last Name with "DC"
-    And I fill in Email with "lian@example.com"
-    And I fill in Confirm Email with "lian@example.com"
+    And I fill in Date of Birth with "01/01/1990"
+    And I fill in a unique Email address
+    And I fill in Confirm Email as the same unique address
     And I fill in Password with "Password1234!"
     And I fill in Confirm Password with "Password1234!"
     And I accept the Terms and Conditions
