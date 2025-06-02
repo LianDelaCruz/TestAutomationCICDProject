@@ -51,3 +51,17 @@ Feature: User Registration
     And I submit the form
     Then I should see "Password did not match" error for field "ConfirmPassword"
 
+  Scenario: Create user – terms and conditions not accepted
+    When I fill in First Name with "Alice"
+    And I fill in Last Name with "Jones"
+    And I fill in Date of Birth with "01/01/1990"
+    And I fill in a unique Email address
+    And I fill in Confirm Email as the same unique address
+    And I fill in Password with "Password1234!"
+    And I fill in Confirm Password with "Password1234!"
+    And I accept the Age Confirmation
+    And I accept Communications Preferences
+    And I accept the Code of Ethics
+    And I submit the form
+    Then I should see "You must confirm that you have read and accepted our Terms and Conditions" error for field "TermsAccept"
+

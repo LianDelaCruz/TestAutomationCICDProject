@@ -122,6 +122,7 @@ public class RegistrationSteps {
         String actualMessage = driver.findElement(By.cssSelector(css)).getText().trim();
         assertEquals(expectedMessage, actualMessage);
 
+        driver.quit();
     }
 
 }
