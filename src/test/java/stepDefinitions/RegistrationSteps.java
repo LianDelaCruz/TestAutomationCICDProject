@@ -36,6 +36,11 @@ public class RegistrationSteps {
     public void iFillInLastNameWith(String lastName) {
         driver.findElement(By.id("member_lastname")).sendKeys(lastName);
     }
+
+    @And("I leave Last Name blank")
+    public void iLeaveLastNameBlank() {
+    }
+
     @And("I fill in Date of Birth with {string}")
     public void iFillInDateOfBirthWith(String dob) {
         driver.findElement(By.id("dp")).sendKeys(dob);
@@ -108,6 +113,15 @@ public class RegistrationSteps {
         );
 
         driver.quit();
+    }
+
+
+    @Then("I should see {string} error for field {string}")
+    public void verifyFieldError(String expectedMessage, String fieldName) {
+        String css = "span[data-valmsg-for='" + fieldName + "']";
+        String actualMessage = driver.findElement(By.cssSelector(css)).getText().trim();
+        assertEquals(expectedMessage, actualMessage);
+
     }
 
 }
